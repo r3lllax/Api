@@ -1,0 +1,528 @@
+{
+	"info": {
+		"_postman_id": "68bf3977-98bd-4ad9-8f39-9e201a7ad194",
+		"name": "Gagarin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2211071",
+		"_collection_link": "https://cloudy-capsule-521904.postman.co/workspace/Team-Workspace~e975aff5-a3c2-468c-8cc4-148df1b67ce0/collection/2211071-68bf3977-98bd-4ad9-8f39-9e201a7ad194?action=share&source=collection_link&creator=2211071"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "dеееерр",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Last",
+							"type": "text"
+						},
+						{
+							"key": "patronymic",
+							"value": "Pat",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.ru01141",
+							"type": "text"
+						},
+						{
+							"key": "birth_date",
+							"value": "2000-01-01",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aaa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/registration",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token\", pm.response.json().token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "test@test.ru01141",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/authorization",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/logout",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gagaring flights",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/gagarin-flight",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"gagarin-flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gagaring flights Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/flight",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add mission",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mission\": {\r\n        \"name\": \"Apollo-17\",\r\n        \"launch_details\": {\r\n            \"launch_date\": \"1972-12-07\",\r\n            \"launch_site\": {\r\n                \"name\": \"Kennedy Space Center\",\r\n                \"location\": {\r\n                    \"latitude\": -90,\r\n                    \"longitude\": -80.6480000\r\n                }\r\n            }\r\n        },\r\n        \"landing_details\": {\r\n            \"landing_date\": \"1972-12-19\",\r\n            \"landing_site\": {\r\n                \"name\": \"Taurus-Littrov \",\r\n                \"coordinates\": {\r\n                    \"latitude\": 20.1908000,\r\n                    \"longitude\": 30.7717000\r\n                }\r\n            }\r\n        },\r\n        \"spacecraft\": {\r\n            \"command_module\": \"America\",\r\n            \"lunar_module\": \"Challenger\",\r\n            \"crew\": [\r\n                {\r\n                    \"name\": \"Evgeniy Cernan\",\r\n                    \"role\": \"Commander\"\r\n                },\r\n                {\r\n                    \"name\": \"Harrison Schmitt\",\r\n                    \"role\": \"Lunar module pilot\"\r\n                },\r\n                {\r\n                    \"name\": \"Ronald Evans\",\r\n                    \"role\": \"Lunar module pilot\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/lunar-missions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"lunar-missions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update mission",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mission\": {\r\n        \"name\": \"Apollo-18\",\r\n        \"launch_details\": {\r\n            \"launch_date\": \"1972-12-07\",\r\n            \"launch_site\": {\r\n                \"name\": \"Kennedy Space Center\",\r\n                \"location\": {\r\n                    \"latitude\": 28.5721000,\r\n                    \"longitude\": -80.6480000\r\n                }\r\n            }\r\n        },\r\n        \"landing_details\": {\r\n            \"landing_date\": \"1972-12-19\",\r\n            \"landing_site\": {\r\n                \"name\": \"Taurus-Littrov \",\r\n                \"coordinates\": {\r\n                    \"latitude\": 20.1908000,\r\n                    \"longitude\": 30.7717000\r\n                }\r\n            }\r\n        },\r\n        \"spacecraft\": {\r\n            \"command_module\": \"America\",\r\n            \"lunar_module\": \"Challenger\",\r\n            \"crew\": [\r\n                {\r\n                    \"name\": \"Evgeniy Cernan\",\r\n                    \"role\": \"Commander\"\r\n                },\r\n                {\r\n                    \"name\": \"Harrison Schmitt\",\r\n                    \"role\": \"Lunar module pilot\"\r\n                },\r\n                {\r\n                    \"name\": \"Ronald Evans\",\r\n                    \"role\": \"Lunar module pilot\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/lunar-missions/3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"lunar-missions",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get missions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/lunar-missions",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"lunar-missions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search missions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/search?query=Виктор",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Виктор"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get mission",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/lunar-missions/222af/sadfsd",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"lunar-missions",
+						"222af",
+						"sadfsd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create space flight",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "flight_number",
+							"value": "TEST",
+							"type": "text"
+						},
+						{
+							"key": "destination",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "launch_date",
+							"value": "2000-01-01",
+							"type": "text"
+						},
+						{
+							"key": "seats_available",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/space-flights",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"space-flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get space flights",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{host}}/space-flights",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"space-flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book flight",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "flight_number",
+							"value": "Test",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/book-flight",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"book-flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete mission",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mission\": {\r\n        \"name\": \"Apollo-17\",\r\n        \"launch_details\": {\r\n            \"launch_date\": \"1972-12-07\",\r\n            \"launch_site\": {\r\n                \"name\": \"Kennedy Space Center\",\r\n                \"location\": {\r\n                    \"latitude\": 28.5721000,\r\n                    \"longitude\": -80.6480000\r\n                }\r\n            }\r\n        },\r\n        \"landing_details\": {\r\n            \"landing_date\": \"1972-12-19\",\r\n            \"landing_site\": {\r\n                \"name\": \"Taurus-Littrov \",\r\n                \"coordinates\": {\r\n                    \"latitude\": 20.1908000,\r\n                    \"longitude\": 30.7717000\r\n                }\r\n            }\r\n        },\r\n        \"spacecraft\": {\r\n            \"command_module\": \"America\",\r\n            \"lunar_module\": \"Challenger\",\r\n            \"crew\": [\r\n                {\r\n                    \"name\": \"Evgeniy Cernan\",\r\n                    \"role\": \"Commander\"\r\n                },\r\n                {\r\n                    \"name\": \"Harrison Schmitt\",\r\n                    \"role\": \"Lunar module pilot\"\r\n                },\r\n                {\r\n                    \"name\": \"Ronald Evans\",\r\n                    \"role\": \"Lunar module pilot\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/lunar-missions/5",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"lunar-missions",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Watermark",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileimage",
+							"type": "file",
+							"src": "/C:/Users/Victor/Downloads/20200125110231_Priroda_10-344.jpg"
+						},
+						{
+							"key": "message",
+							"value": "1234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/lunar-watermark",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"lunar-watermark"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
