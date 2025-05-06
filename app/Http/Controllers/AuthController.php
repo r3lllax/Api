@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
+use http\Env\Response;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -36,6 +38,11 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * Authorization
+     * @param AuthRequest $request
+     * @return JsonResponse|array
+     */
     public function authorization(AuthRequest $request)
     {
         if(auth()->attempt($request->validated())){
@@ -58,5 +65,15 @@ class AuthController extends Controller
             'code'=>401,
             'message'=>'Login failed',
         ],401);
+    }
+
+    /**
+     * @return Response
+     */
+
+    public function logout()
+    {
+        auth()->user()->currentAccessToken()->delete();
+        return response()->noContent();
     }
 }
