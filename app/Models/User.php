@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,6 +19,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $password
  * @property string $birth_date
  *
+ * @property-read  Collection lunarMissions
  */
 
 class User extends Authenticatable
@@ -61,6 +64,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    /**
+     * Get Lunar missions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lunarMissions()
+    {
+        return $this->hasMany(LunarMission::class,"user_id","id");
+    }
+
+    /**
+     * @return string
+     */
 
     public function fullName()
     {
