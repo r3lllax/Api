@@ -8,6 +8,7 @@ class LunarMission extends Model
 {
     protected $fillable = [
         'name',
+        'user_id',
         'launch_details',
         'landing_details',
         'spacecraft',
