@@ -33,7 +33,8 @@ class SpaceFlightController extends Controller
      */
     public function index()
     {
-        $response =  SpaceFlight::query()->select('flight_number','destination','launch_date','seats_available')->get();
+        $response =  SpaceFlight::query()->select('id','flight_number','destination','launch_date','seats_available')->get();
+        return $response;
     }
 
 
