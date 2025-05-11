@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\FirstLetterRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegistrationRequest extends FormRequest
@@ -14,11 +15,11 @@ class RegistrationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name'=>'required|string|max:255',
-            'last_name'=>'required|string|max:255',
-            'patronymic'=>'required|string|max:255',
+            'first_name'=>['required','string','max:255',new FirstLetterRule()],
+            'last_name'=>['required','string','max:255',new FirstLetterRule()],
+            'patronymic'=>['required','string','max:255',new FirstLetterRule()],
             'email'=>'required|string|email|max:255|unique:users,email',
-            'password'=>'required|string|min:3',
+            'password'=>'required|string|min:3|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{3,}$/u',
             'birth_date'=>'required|string|max:255',
         ];
     }
