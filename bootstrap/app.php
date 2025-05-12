@@ -49,7 +49,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'message'=>'Validation error',
                     'errors'=>$e->validator->errors(),
                 ]
-            ],403);
+            ],422);
         });
         $exceptions->render(function (AuthenticationException $e){
             return response()->json([
