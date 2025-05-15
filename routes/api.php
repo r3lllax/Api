@@ -11,10 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::post("/registration",[AuthController::class,'registration']);
 Route::post("/authorization",[AuthController::class,'authorization']);
 
-Route::get("/gagarin-flight", GagarinController::class);
-Route::get("/search",[LunarMissionController::class,'search']);
-Route::get("/lunar-missions",[LunarMissionController::class,'index']);
-Route::get("/lunar-missions/{mission}",[LunarMissionController::class,'show']);
+
 
 
 
@@ -23,6 +20,12 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::post("/space-flights",[SpaceFlightController::class,'store']);
     Route::get("/space-flights",[SpaceFlightController::class,'index']);
     Route::post("/book-flight",[SpaceFlightController::class,'book']);
+
+
+    Route::get("/gagarin-flight", GagarinController::class);
+    Route::get("/search",[LunarMissionController::class,'search']);
+    Route::get("/lunar-missions",[LunarMissionController::class,'index']);
+    Route::get("/lunar-missions/{mission}",[LunarMissionController::class,'show']);
 
     Route::post("/lunar-missions",[LunarMissionController::class,'store']);
     Route::post("/lunar-watermark",Watermark::class);
